@@ -9,7 +9,7 @@ exports.handler = async (event) => {
 
   const msg = {
     to: 'autarasolutions@gmail.com', // your real email
-    from: 'no-reply@autarasolutions.com', // verified sender in SendGrid
+    from: 'autarasolutions@gmail.com', // verified sender in SendGrid
     subject: `New Contact Form Submission from ${name}`,
     text: `From: ${name} (${email})\n\nMessage:\n${message}`
   };
