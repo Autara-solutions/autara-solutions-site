@@ -87,7 +87,7 @@
     <div class="section-title" id="contact">
       <h2>Contact Us</h2>
     </div>
-    <form>
+   <!--  <form>
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Your Name">
@@ -101,7 +101,15 @@
         <textarea class="form-control" id="message" rows="3" placeholder="Your message here..."></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Send</button>
-    </form>
+    </form> -->
+
+  <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" data-netlify-function="send-email">
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
   </div>
 
   <div class="footer">
