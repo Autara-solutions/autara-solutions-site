@@ -103,13 +103,49 @@
       <button type="submit" class="btn btn-primary">Send</button>
     </form> -->
 
-  <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" data-netlify-function="send-email">
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send</button>
-</form>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    
+    <div id="form-status" style="margin-top: 1em;"></div>
+    
+    <script>
+      const form = document.getElementById('contactForm');
+      const statusDiv = document.getElementById('form-status');
+    
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+    
+        const formData = {
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value
+        };
+    
+        try {
+          const response = await fetch('/.netlify/functions/send-email', {
+            method: 'POST',
+            body: JSON.stringify(formData)
+          });
+    
+          const result = await response.json();
+    
+          if (result.success) {
+            statusDiv.innerText = "✅ Message sent successfully!";
+            form.reset();
+          } else {
+            statusDiv.innerText = "⚠️ Failed to send. Please try again.";
+          }
+        } catch (error) {
+          statusDiv.innerText = "❌ An error occurred. Try again later.";
+          console.error(error);
+        }
+      });
+    </script>
+    
   </div>
 
   <div class="footer">

@@ -5,6 +5,7 @@ exports.handler = async (event) => {
   const { name, email, message } = data;
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  
 
   const msg = {
     to: 'autarasolutions@gmail.com', // your real email
