@@ -1,3 +1,10 @@
+.hero {
+  background: linear-gradient(to right, #003366, #007a87);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
 
 body {
   font-family: 'Segoe UI', sans-serif;
